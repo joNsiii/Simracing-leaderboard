@@ -1,0 +1,11 @@
+{
+  "hosting": [
+    {
+      "target": "iracing-leaderboard",
+      "source": ".",
+      "frameworksBackend": {
+        "region": "europe-west1"
+      }
+    }
+  ]
+}

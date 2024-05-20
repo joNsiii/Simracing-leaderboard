@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "iracing-leaderboard-9dd81": {
+      "hosting": {
+        "iracing-leaderboard": [
+          "iracing-leaderboard-9dd81"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "iracing-leaderboard-9dd81"
+  }
+}

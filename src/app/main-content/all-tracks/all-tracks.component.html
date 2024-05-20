@@ -1,0 +1,24 @@
+<section>
+    <div>
+        <div class="input-container">
+            <div class="slider-container">
+                <p>Tracks</p>
+                <label>
+                    <input type="checkbox" class="toggle-checkbox">
+                    <div (click)="toogleFlip()" class="toggle-switch"></div>
+                </label>
+                <p>Leaderboard</p>
+            </div>
+            <div class="search-input-group">
+                <label for="track"></label>
+                <input type="text" class="input" id="track" name="track" [(ngModel)]="service.track"
+                    (input)="service.filterData()" placeholder="search for track">
+            </div>
+        </div>
+    </div>
+    <div class="card-section">
+        @for (card of service.filteredDataList; track card) {
+        <app-single-card [cardFlipped]="flipped" [singleTrack]="card" class="single-card"></app-single-card>
+        }
+    </div>
+</section>

@@ -1,0 +1,62 @@
+<section>
+    <header>
+        <h1><b>T</b>ime</h1>
+        <h1><b>A</b>ttack</h1>
+    </header>
+    <div class="add-time-section">
+        <h2>
+            Add new Time
+        </h2>
+        <form (ngSubmit)="onSubmit(driverForm)" #driverForm="ngForm">
+            <div class="form-group">
+                <label>Name:</label>
+                <input type="text" #driver="ngModel" [(ngModel)]="driverData.driver" name="driver" class="input" required>
+                @if (driver.invalid && (driver.touched || driverForm.submitted)) {
+                <p class="invalid-feedback">Name is required</p>
+                }
+            </div>
+            <div class="form-group">
+                <label>Time:</label>
+                <input type="text" #time="ngModel" [(ngModel)]="driverData.time" name="time" placeholder="m.ss.SSS"
+                    pattern="\d{1}.\d{2}.\d{3}" class="input" required>
+                @if (time.invalid && (time.touched || driverForm.submitted)) {
+                <p class="invalid-feedback">Time is required</p>
+                }
+                @if (time.errors?.['pattern']) {
+                <p class="invalid-feedback">Use this timeformat: m.ss.SSS</p>
+                }
+            </div>
+            <div class="form-group">
+                <label>Car:</label>
+                <select type="text" #car="ngModel" [(ngModel)]="driverData.car" name="car" class="input" required>
+                    <option value="Ferrari">Ferrari</option>
+                    <option value="Porsche">Porsche</option>
+                    <option value="McLaren">McLaren</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Mercedes AMG">Mercedes AMG</option>
+                </select>
+                @if (car.invalid && (car.touched || driverForm.submitted)) {
+                <p class="invalid-feedback">Car is required</p>
+                }
+            </div>
+            <div class="form-group">
+                <label>Track:</label>
+                <select type="track" #track="ngModel" [(ngModel)]="driverData.track" name="track" class="input"
+                    required>
+                    @for (track of dataService.trackDataList; track track) {
+                    <option value="{{ track.id }}">{{ track.id }}</option>
+                    }
+                </select>
+                @if (track.invalid && (track.touched || driverForm.submitted)) {
+                <p class="invalid-feedback">Track is required</p>
+                }
+            </div>
+            <div class="form-group-btn">
+                <button type="submit" class="btn">{{ regBtn }}</button>
+                <button type="button" (click)="onReset(driverForm)" class="btn btn-warning float-right">
+                    Reset
+                </button>
+            </div>
+        </form>
+    </div>
+</section>

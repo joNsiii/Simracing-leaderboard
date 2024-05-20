@@ -1,0 +1,32 @@
+<div [class.flipped]="cardFlipped" class="flip-card">
+    <div [class.flipped]="cardFlipped"  class="flip-card-inner">
+        <div class="flip-card-front">
+            <h1> {{ singleTrack.id }}</h1>
+
+        </div>
+        <div class="flip-card-back">
+            <div class="back-side-header">
+                <h2>{{ singleTrack.id }}</h2>
+            </div>
+            <div class="table-div">
+                <table>
+                    <tbody>
+                        @for (driver of singleTrack.data.drivers; track driver) {
+                        <tr>
+                            <td>
+                                {{ $index + 1 }}. {{ driver.driver }}
+                            </td>
+                            <td>
+                                {{ driver.car }}
+                            </td>
+                            <td>
+                                {{ driver.time }}
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
